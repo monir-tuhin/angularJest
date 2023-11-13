@@ -1,0 +1,52 @@
+>> JEST Unit test playlist tutorial link :: "https://www.youtube.com/playlist?list=PLZeQR2FcsS5QSc_pIGa3m9i50ieModgL_"
+-----------------------------------------------------------------------------------------------------------------------------------
+
+Step 1: Uninstall all karma jasmine packages
+ >> "npm uninstall @types/jasmine jasmine-core karma karma-chrome-launcher karma-coverage karma-jasmine karma-jasmine-html-reporter"
+Step 2: Remove test object from Angular.json
+Step 3: Delete karma.conf.js file and test.ts file
+Step 4: Install jest package
+ >> "npm i jest @types/jest jest-preset-angular"
+Step 5: Create setup.jest.ts file
+Step 6: Update tsconfig.spec.json file
+Step 7: Add jest configuration in package.json at the end after 'devDependencies: '
+  >> ` "jest": {
+         "preset": "jest-preset-angular",
+         "setupFilesAfterEnv": [
+           "<rootDir>/src/setup.jest.ts"
+         ],
+         "testPathIgnorePatterns": [
+           "<rootDir>/node_modules/",
+           "<rootDir>/dist/"
+         ],
+         "globals": {
+           "ts-jest": {
+             "tsConfig": "<rootDir>/tsconfig.spec.json",
+             "stringifyContentPathRegex": "\\.html$"
+           }
+         }
+       }`
+Step 8: Add scripts in package.json to run JEST
+    >> "test": "jest",
+    >> "test:watch": "jest --watch",
+    >> "test:coverage": "jest --coverage"
+Step 9: Create Test Cases
+Step 10: Run test cases and check coverage report
+
+
+
+>> Execute specific test cases ::
+-----------------------------------------------------------------------------------------------------------
+1. "npm run test data.component.spec.ts" : To run all test cases of specific file
+2. "npm run test fake" : To run all test cases of specific service file which name is fake
+3. "npm run test /services/" : To run all test cases of all spec files which are belong to 'services' folder
+4. "it.only" : To run specific test case of a single spec file. Will Skip all test cases without "it.only". Only run "it.only"
+5. "it.skip" : To run all test cases of a single spec file except "it.skip" test case. Will Skip only "it.skip" and run all without it"
+6. "npm run test:coverage data" : To get coverage report of a specific test file
+
+
+>> Remove warning message ::
+---------------------------------------------------------------------------------------------------
+1. In package.josn change in last portion "tsConfig" in to "tsconfig"
+2. In tsconfig.josn add this below line
+    "esModuleInterop": true,
